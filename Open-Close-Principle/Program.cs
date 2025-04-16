@@ -1,4 +1,5 @@
 ﻿using Open_Close_Principle.Methods.E_Commerce;
+using Open_Close_Principle.Methods.Notification_System;
 
 class Program
 {
@@ -29,6 +30,13 @@ class Program
 
                 break;
             case 2:
+                var emailNotification = new EmailNotification();
+                var sender = new NotificationSender(emailNotification);
+                sender.SendNotification("Hello, this is a test email notification!");
+
+                var smsNotification = new SMSNotification();
+                sender = new NotificationSender(smsNotification);
+                sender.SendNotification("Hello, this is a test SMS notification!");
                 break;
             default:
                 Console.WriteLine("Invalid option. Please try again.");
